@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Update article{% endblock %}
+
+
+{% block style %}
+<style>
+    .update_style{
+        width: 500px;
+        margin: auto;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container update_style">
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {{form | crispy}}
+
+        <input type="submit" value="Update Article" class="btn btn-success">
+
+    </form>
+</div>
+
+{% endblock %}
