@@ -5,6 +5,7 @@
 
 !Blog/
 !Blog/manage.py
+!Blog/requirements.txt
 !Blog/Blog/
 !Blog/Blog/*.py
 
