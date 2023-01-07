@@ -11,6 +11,9 @@
 !Blog/articles/
 !Blog/articles/*.py
 
+!Blog/articles/static
+!Blog/articles/static/*.js
+
 !Blog/articles/templates/
 !Blog/articles/templates/*.html
 
@@ -22,6 +25,3 @@
 
 !Blog/articles/templates/migrations/
 !Blog/articles/templates/migrations/__init__.py
-
-
-
