@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import Article
 from .forms import LoginForm, UserRegistration, ArticleRegistrationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
@@ -63,14 +64,31 @@ def register(request):
 
     return render(request, 'account/register.html', {'user_form': user_form})
 
-
 def user_logout(request):
-    if request.method == "GET":
+    try:
         logout(request)
-    else:
-        return HttpResponse("Loggout not successful")
+    except BaseException as e:
+        return HttpResponse(f'Error during logout: {str(e)}')
     
     return render(request=request, template_name='account/logout.html')
+
+@login_required
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+
+            return redirect('password-change-done')
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'registration/password_change.html', {'form': form})
+
+@login_required
+def password_change_done(request):
+    return render(request, 'registration/password_change_done.html')
 
 @login_required
 def article_form(request):
