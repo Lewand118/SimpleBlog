@@ -80,7 +80,7 @@ def password_change(request):
             form.save()
             update_session_auth_hash(request, form.user)
 
-            return redirect('password-change-done')
+            return redirect('password_change_done')
     else:
         form = PasswordChangeForm(user=request.user)
 
