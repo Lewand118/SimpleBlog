@@ -12,7 +12,11 @@
 
 <div class="container mt-4">
     <h1>{{article.title}}</h1>
-    <h6>Published {{article.published}} by <i>{{article.author}}</i></h6>
+    <h6>Published {{article.published}} by <i>{{article.author}}</i>
+        <span class="badge rounded-pill bg-secondary">
+            {{article.category}}
+        </span>
+    </h6>
     <br>
     <p>{{article.description}}</p>
 

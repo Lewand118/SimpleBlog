@@ -22,6 +22,9 @@
         <span class="badge rounded-pill bg-success">
             Author: {{article.author}}
         </span>
+        <span class="badge rounded-pill bg-secondary">
+            {{article.category}}
+        </span>
         <h1><a class="link-style" href="{% url 'article_details' article.slug %}">{{article.title}}</a></h1>
 
     {% endfor %}
