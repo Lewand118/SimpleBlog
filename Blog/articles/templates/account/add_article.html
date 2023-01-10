@@ -2,8 +2,6 @@
 {% load crispy_forms_tags %}
 
 {% block title %}Add article{% endblock %}
-
-
 {% block style %}
 <style>
     .add_style{
@@ -12,16 +10,12 @@
     }
 </style>
 {% endblock %}
-
 {% block body %}
 <div class="container add_style">
     <form action="" method="POST" novalidate>
         {% csrf_token %}
         {{article_form | crispy}}
-
         <input type="submit" value="Add Article" class="btn btn-success">
-
     </form>
 </div>
-
 {% endblock %}
