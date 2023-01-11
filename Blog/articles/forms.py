@@ -24,5 +24,5 @@ class UserRegistration(forms.ModelForm):
 class ArticleRegistrationForm(forms.ModelForm):
      class Meta:
           model = Article
-          fields = ('title', 'description')
+          fields = ('title', 'description', 'category')
 
